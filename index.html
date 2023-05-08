@@ -35,7 +35,6 @@
 </head>
 
 <!-- cuerpo -->
-
 <body>
 
     <!-- logo -->
@@ -59,7 +58,7 @@
 
             <div class="formulario">
 
-                <!-- nombre -->
+                <!-- nombre y apellido -->
                 <form action="">
 
                     <p>
@@ -68,21 +67,34 @@
                         <input name="nombre" type="text" />
                     </p>
 
-                    <!-- celular -->
+                    <!-- edad -->
                     <p>
                         <label for="edad">EDAD</label>
 
                         <input name="edad" type="number" />
                     </p>
 
-                    <!-- email -->
-                    <p>
-                        <label for="monto">INGRESA EL MONTO QUE NECESITAS</label>
+                    <!-- monto-->
+                    <p class="monto">
+                        <label for="monto">ELEGI EL MONTO QUE NECESITAS</label>
 
-                        <input name="monto" type="number" />
+                        <select name="monto" id="monto">
+                        
+                            <option value="monto">$5000</option>
+                            <option value="monto">$10000</option>
+                            <option value="monto">$15000</option>
+                            <option value="monto">$20000</option>
+                            <option value="monto">$25000</option>
+                            <option value="monto">$30000</option>
+                            <option value="monto">$35000</option>
+                            <option value="monto">$40000</option>
+                            <option value="monto">$45000</option>
+                            <option value="monto">$50000</option>
+
+                        </select>
                     </p>
 
-                    <!-- horario -->
+                    <!-- cuotas -->
                     <p class="cuotas">
                         <label for="cuotas">ELEGI LA CANTIDAD DE CUOTAS</label>
 
@@ -127,7 +139,7 @@
         </div>
     </footer>
 
-    <script src="js/index.js"></script>
+  <script src="js/index.js"></script>
 
 </body>
 
