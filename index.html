@@ -5,6 +5,7 @@
 <html lang="en">
 
 <!-- cabecera -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,22 +29,103 @@
     <!-- estilo css -->
     <link rel="stylesheet" href="css/index.css">
 
+    <!-- animacion -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
 </head>
 
 <!-- cuerpo -->
+
 <body>
 
+    <!-- logo -->
     <div class="logo">
-        <img src="img/prestamo.png" alt="logo" width="270px" height="200px;">
+        <img src="img/prestamo.png" alt="logo" width="300px" height="200px;">
     </div>
 
-    <div class="titulo">
+    <!-- titulos -->
+    <div class="titulo animate__animated animate__tada">
         <h1>PRESTAMOS RB</h1>
     </div>
 
-<div class="titulo">
-    <h2>SOLICITA TU PRESTAMO Y TU MEJOR FINANCIACION</h2>
-</div>
+    <div class="titulo animate__animated animate__tada">
+        <h2>SOLICITA TU PRESTAMO Y TU MEJOR FINANCIACION</h2>
+    </div>
+
+    <!-- formulario -->
+    <div class="contenedor">
+
+        <div class="contenedorform">
+
+            <div class="formulario">
+
+                <!-- nombre -->
+                <form action="">
+
+                    <p>
+                        <label for="nombre">NOMBRE Y APELLIDO</label>
+
+                        <input name="nombre" type="text" />
+                    </p>
+
+                    <!-- celular -->
+                    <p>
+                        <label for="edad">EDAD</label>
+
+                        <input name="edad" type="number" />
+                    </p>
+
+                    <!-- email -->
+                    <p>
+                        <label for="monto">INGRESA EL MONTO QUE NECESITAS</label>
+
+                        <input name="monto" type="number" />
+                    </p>
+
+                    <!-- horario -->
+                    <p class="cuotas">
+                        <label for="cuotas">ELEGI LA CANTIDAD DE CUOTAS</label>
+
+                        <select name="cuotas" id="cuotas">
+                            <option value="cuota">3</option>
+                            <option value="cuota">6</option>
+                            <option value="cuota">12</option>
+                            <option value="cuota">18</option>
+                        </select>
+                    </p>
+
+                    <!-- boton -->
+                    <p class="boton">
+                        <button  class= "button" type="submit">CALCULA TU PRESTAMO</button>
+                    </p>
+
+                </form>
+
+                </h3>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="footer">
+
+            <div>
+                <a href="index.html"><img src="img/facebook.png" alt="facebook" width="30px" height="30px"></a>
+            </div>
+
+            <div>
+                <a href="index.html"><img src="img/instagram.png" alt="instagram" width="30px" height="30px"></a>
+            </div>
+
+            <div>
+                <a href="index.html"><img src="img/whatsapp.png" alt="whatsapp" width="30px" height="30px"></a>
+            </div>
+
+        </div>
+    </footer>
 
     <script src="js/index.js"></script>
 
