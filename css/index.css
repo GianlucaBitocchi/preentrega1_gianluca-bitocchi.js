@@ -16,10 +16,11 @@ body {
     margin-top: 10px;
 }
 
-/* titulos */
+/* titulo */
 .titulo {
     display: flex;
     justify-content: center;
+    margin-top: 3px;
 }
 
 /* formulario */
