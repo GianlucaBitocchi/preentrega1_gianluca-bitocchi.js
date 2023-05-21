@@ -52,11 +52,13 @@ while (edadUsuario >= 18) {
         mostrarSolicitudPrestamo(monto, cuotas, total);
         break;
     }
+
+    else {
+        console.log("Necesitas ser mayor de edad")
+    }
+
 }
 
-if (edadUsuario <= 17) {
-    console.log("Necesitas ser mayor de edad")
-}
 
 
 
