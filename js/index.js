@@ -1,64 +1,80 @@
+class PrestamoUsuario {
 
-// calulador de interes
-function calcularInteres(monto, cuotas) {
+    constructor(nombre, monto, cuotas) {
 
-    if (cuotas == 3) {
-        let interes = monto * 0.30;
-        return interes
+        this.nombre = nombre;
+        this.monto = monto;
+        this.cuotas = cuotas;
+        this.monto_final = 0;
     }
 
-    else if (cuotas == 6) {
-        let interes = monto * 0.60;
-        return interes
+// calculador de intereses
+    calcularIntereses(monto, cuotas) {
+
+        let interes;
+
+        if (cuotas == 3) {
+            interes = monto * 0.30;
+            this.monto_final = this.monto + interes;
+        }
+        else if (cuotas == 6) {
+            interes = monto * 0.60;
+            this.monto_final = this.monto + interes;
+        }
+        else if (cuotas == 12) {
+            interes = monto * 1.20;
+            this.monto_final = this.monto + interes;
+        }
+        else if (cuotas == 18) {
+            interes = monto * 1.80;
+            this.monto_final = this.monto + interes;
+        }
+
     }
 
-    else if (cuotas == 12) {
-        let interes = monto * 1.20;
-        return interes
-    }
+    // datos del prestamo
+    get_datos() {
 
-    else if (cuotas == 18) {
-        let interes = monto * 1.80;
-        return interes
+        console.log("Titular del prestamo: ", this.nombre);
+        console.log("Monto solicitado: ", this.monto);
+        console.log("Cantidad de cuotas solicitadas: ", this.cuotas);
+        console.log("Total a pagar con intereses: ", this.monto_final);
+
     }
 }
 
-let nombreApellidoUsuario = prompt("Ingresa tu Nombre y Apellido");
+let nombreUsuario = "";
+let prestamos = [ ];
 
-let edadUsuario = prompt("Ingrese su Edad");
-parseInt(edadUsuario);
+for (let i = 0; i < 3; i = i + 1) {
 
-while (edadUsuario >= 18) {
+    let nombreUsuario = prompt("INGRESE SU NOMBRE Y APELLIDO");
+    let edad = prompt("INGRESE SU EDAD");
+    edad = parseInt(edad);
 
-    if (edadUsuario >= 18) {
+    if (edad >= 18) {
 
-        console.log("Bienvenido a prestamos RB: ", nombreApellidoUsuario);
+        console.log("BIENVENIDO A PRESTAMOS RB:", nombreUsuario)
 
-        monto = prompt("Ingrese el monto que desea solicitar");
+        let monto = prompt("INGRESE EL MONTO QUE DESEA SOLICITAR");
         monto = parseInt(monto);
+        
+        let cuotas = prompt("EN CUANTAS CUOTAS 3 , 6 , 12 o 18");
+        cuotas = parseInt (cuotas);
 
-        let cuotas = prompt("En cuantas cuotas: 3, 6 ,12 o 18");
+        let prestamo = new PrestamoUsuario (nombreUsuario, monto, cuotas);
+        prestamo.calcularIntereses(monto, cuotas);
 
-        function mostrarSolicitudPrestamo(monto, cuotas, total) {
+        prestamos.push(prestamo);
+        prestamo.get_datos ();
 
-            console.log("Solicitaste: ", monto);
-            console.log("Cantidad de cuotas: ", cuotas);
-            console.log("Total con intereses: ", total);
-            console.log("Pagas por cuotas: ", total / cuotas)
-        }
+    }
 
-        let total = monto + calcularInteres(monto, cuotas);
+    else if (edad <= 17) {
 
-        mostrarSolicitudPrestamo(monto, cuotas, total);
+        console.log(nombreUsuario ,"NECESITAS SER MAYOR DE EDAD");
         break;
     }
 
-    else {
-        console.log("Necesitas ser mayor de edad")
-    }
-
 }
-
-
-
 
