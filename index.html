@@ -35,12 +35,17 @@
 </head>
 
 <!-- cuerpo -->
+
 <body>
 
     <!-- logo -->
-    <div class="logo">
-        <img src="img/prestamo.png" alt="logo" width="220px" height="170px;">
-    </div>
+    <header>
+
+        <div class="logo">
+            <img src="img/prestamo.png" alt="logo" width="220px" height="170px;">
+        </div>
+
+    </header>
 
     <!-- titulo -->
     <div class="titulo animate__animated animate__tada">
@@ -55,27 +60,26 @@
             <div class="formulario">
 
                 <!-- nombre y apellido -->
-                <form action="">
+                <form action="" id="formulario">
 
-                    <p>
-                        <label for="nombre">NOMBRE Y APELLIDO</label>
+                    <p class="nombre">
+                        <label for="nombreUsuario">NOMBRE Y APELLIDO</label>
 
-                        <input name="nombre" type="text" />
+                        <input type="text" id="nombreUsuario"/>
                     </p>
 
                     <!-- edad -->
-                    <p>
-                        <label for="edad">EDAD</label>
+                    <p class="edad">
+                        <label for="edadUsuario">EDAD</label>
 
-                        <input name="edad" type="number" />
+                        <input type="number" id="edadUsuario"/>
                     </p>
 
                     <!-- monto-->
                     <p class="monto">
-                        <label for="monto">ELEGI EL MONTO QUE NECESITAS</label>
+                        <label for="montoUno">ELEGI EL MONTO QUE NECESITAS</label>
 
-                        <select name="monto" id="monto">
-
+                        <select id="montoUno">
                             <option value="monto">$10000</option>
                             <option value="monto">$15000</option>
                             <option value="monto">$20000</option>
@@ -85,25 +89,28 @@
                             <option value="monto">$40000</option>
                             <option value="monto">$45000</option>
                             <option value="monto">$50000</option>
-
                         </select>
+                        
                     </p>
 
                     <!-- cuotas -->
                     <p class="cuotas">
-                        <label for="cuotas">ELEGI LA CANTIDAD DE CUOTAS</label>
+                        <label for="cuotasUno">ELEGI LA CANTIDAD DE CUOTAS</label>
 
-                        <select name="cuotas" id="cuotas">
+                        <select id="cuotasUno">
                             <option value="cuota">3</option>
                             <option value="cuota">6</option>
                             <option value="cuota">12</option>
                             <option value="cuota">18</option>
                         </select>
+
                     </p>
 
                     <!-- boton -->
                     <p class="boton">
-                        <button class="button" type="submit">CALCULA TU PRESTAMO</button>
+
+                        <button class="button" id="botonCalcular">CALCULA TU PRESTAMO</button>
+
                     </p>
 
                 </form>
@@ -113,7 +120,11 @@
             </div>
 
         </div>
+
     </div>
+
+    <div id="mensaje">
+    </div>    
 
     <!-- footer -->
     <footer>

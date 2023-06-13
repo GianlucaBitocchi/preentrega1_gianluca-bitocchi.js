@@ -56,7 +56,7 @@ body {
 }
 
 .formulario {
-    background: rgb(252, 248, 248);
+    background: rgb(218, 217, 214);
     padding: 1em;
 }
 
@@ -70,22 +70,23 @@ body {
     outline: 0;
     color: rgb(77, 175, 207);
     border-bottom: 1px solid rgb(77, 175, 207);
+    text-align: center;
 }
 
 .formulario form button {
     background: rgb(77, 175, 207);
-    color: white;
+    color: rgb(218, 217, 214);
     border: 0;
     padding: 1em;
 }
 
 .boton :hover{
-background-color: rgb(44, 142, 175);
+background-color: rgb(59, 156, 189);
 }
 
 /* footer */
 .footer {
-    background: rgb(252, 248, 248);
+    background: rgb(218, 217, 214);
     display: flex;
     justify-content: center;
     align-items: center;
