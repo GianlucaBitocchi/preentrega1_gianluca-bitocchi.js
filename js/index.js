@@ -1,135 +1,114 @@
+// Clase para el cálculo del préstamo
 class PrestamoUsuario {
-
+    
     constructor(nombre, monto, cuotas) {
 
         this.nombre = nombre;
         this.monto = monto;
         this.cuotas = cuotas;
-        this.monto_final = 0;
+        this.montoFinal = 0;
+
     }
 
-    // calculador de intereses
-    calcularIntereses(monto, cuotas) {
+    // Método para calcular los intereses y monto final
+    calcularIntereses() {
 
         let interes;
 
-        if (cuotas == 3) {
-            interes = monto * 0.30;
-            this.montoFinal = this.monto + interes;
+        if (this.cuotas === 3) {
+            interes = this.monto * 0.30;
         }
-        else if (cuotas == 6) {
-            interes = monto * 0.60;
-            this.montoFinal = this.monto + interes;
+        else if (this.cuotas === 6) {
+            interes = this.monto * 0.60;
         }
-        else if (cuotas == 12) {
-            interes = monto * 1.20;
-            this.montoFinal = this.monto + interes;
+        else if (this.cuotas === 12) {
+            interes = this.monto * 1.20;
         }
-        else if (cuotas == 18) {
-            interes = monto * 1.80;
-            this.montoFinal = this.monto + interes;
+        else if (this.cuotas === 18) {
+            interes = this.monto * 1.80;
         }
+
+        this.montoFinal = this.monto + interes;
+    }
+
+    // Método para obtener los datos del préstamo
+    obtenerDatos() {
+
+        return {
+
+            nombre: this.nombre,
+            monto: this.monto,
+            cuotas: this.cuotas,
+            montoFinal: this.montoFinal,
+            cuotaMensual: this.montoFinal / this.cuotas,
+
+        };
 
     }
 
-    // datos del prestamo
-    get_datos() {
+}
 
-        console.log("Monto solicitado: ", this.monto);
-        console.log("Cantidad de cuotas solicitadas: ", this.cuotas);
-        console.log("Total a pagar con intereses: ", this.montoFinal);
-        console.log("Total a pagar por cuota: ", this.montoFinal / this.cuotas)
+// Función para calcular el préstamo
+function calcularPrestamo(e) {
 
+    e.preventDefault();
+
+    // Obtener los valores del formulario
+    let nombre = document.getElementById("nombre").value;
+    let edad = parseInt(document.getElementById("edad").value);
+    let monto = parseInt(document.getElementById("monto").value);
+    let cuotas = parseInt(document.getElementById("cuotas").value);
+
+    // Verificar la edad del usuario
+    if (edad >= 18) {
+
+        // Calcular el préstamo
+        let prestamo = new PrestamoUsuario(nombre, monto, cuotas);
+        prestamo.calcularIntereses();
+        let datosPrestamo = prestamo.obtenerDatos();
+
+        // Mostrar los resultados en el DOM
+        let resultadoDiv = document.getElementById("resultado");
+        resultadoDiv.resultadoinnerHTML = `<h2>Resultados del Préstamo</h2>
+                                                                    <p>BIENVENIDO A PRESTAMOS RB: ${datosPrestamo.nombre}</p>
+                                                                    <p>MONTO A DEVOLVER: $${datosPrestamo.montoFinal.toFixed(2)}</p>
+                                                                    <p>TOTAL A PAGAR POR MES: $${datosPrestamo.cuotaMensual.toFixed(2)}</p>
+    `;
+
+    let boton = document.getElementById("botonCalcular");
+    boton.addEventListener("click", calcularPrestamo);
+
+        // Guardar los resultados en el almacenamiento local
+        localStorage.setItem("datosPrestamo", JSON.stringify(datosPrestamo));
+    } 
+    
+    else {
+        // Mostrar mensaje de error si el usuario es menor de 18 años
+        let resultadoDiv = document.getElementById("resultado");
+        resultadoDiv.innerHTML = `<p>NECESITAS SER MAYOR DE EDAD</p>`;
     }
 }
+  
+// Escuchar el evento submit del formulario
+let formulario = document.getElementById("formulario");
+formulario.addEventListener("submit", calcularPrestamo);
 
-let prestamos = [];
+// Obtener los datos del préstamo almacenados en el almacenamiento local y mostrarlos al cargar la página
+document.addEventListener("DOMContentLoaded", function () {
 
-function calcular() {
+    let datosPrestamo = JSON.parse(localStorage.getItem("datosPrestamo"));
+    if (datosPrestamo) {
 
-    let formulario = document.getElementById("formulario");
+        let resultadoDiv = document.getElementById("resultado");
+        resultadoDiv.innerHTML = `
+      <h3>DATOS DEL PRESTAMO QUE SOLICITASTE</h3>
+      <p>BIENVENIDO A PRESTAMOS RB: ${datosPrestamo.nombre}</p>
+      <p>TOTAL A DEVOLVER: $${datosPrestamo.montoFinal.toFixed(2)}</p>
+      <p>TOTAL A PAGAR POR MES: $${datosPrestamo.cuotaMensual.toFixed(2)}</p>
+    `;
 
-    formulario.addEventListener("submit", function (calcular){
+    }
 
-        calcular.preventDefault();
-
-        let nombreUsuario = document.getElementById("nombreUsuario");
-        let edadUsuario = document.getElementById("edadUsuario");
-        edadUsuario = parseInt(edadUsuario);
-        let msj = document.getElementById("mensaje");
-
-        if (edadUsuario.value >= 18) {
-
-            let parrafo = document.createElement("p");
-
-            parrafo.innerText = "BIENVENIDO A PRESTAMOS RB: " + nombreUsuario.value;
-            parrafo.style.textAlign = "center";
-
-            msj.append(parrafo);
-            console.log("nombre", nombreUsuario);
-
-            let monto = document.getElementById("montoUno");
-            monto = parseInt(monto);
-
-            let parrafoDos = document.createElement("p");
-
-            parrafoDos.innerText = "MONTO SOLICITADO: " + monto.value;
-            parrafoDos.style.textAlign = "center";
-
-            msj.append(parrafoDos);
-            console.log("monto", montoUno);
-
-            let cuotas = document.getElementById("cuotasUno");
-            cuotas = parseInt(cuotas);
-
-            let parrafoTres = document.createElement("p");
-
-            parrafoTres.innerText = "CANTIDAD DE CUOTAS SOLICITADAS: " + cuotas.value;
-            parrafoTres.style.textAlign = "center";
-
-            msj.append(parrafoTres);
-            console.log("cuotas", cuotasUno);
-
-            let parrafoCuatro = document.createElement("p");
-
-            parrafoCuatro.innerText = "TOTAL A DEVOLVER: " + montoFinal;
-            parrafoCuatro.style.textAlign = "center";
-
-            msj.append(parrafoCuatro);
-            console.log("monto final", montoFinal);
-
-            let parrafoCinco = document.createElement("p");
-
-            parrafoCinco.innerText = "TOTAL A PAGAR POR CUOTA: " + montoFinal / cuotas;
-            parrafoCinco.style.textAlign = "center";
-
-            msj.append(parrafoCinco);
-            console.log("monto total", montoFinal / cuotasUno);
-
-            let prestamo = new PrestamoUsuario(nombreUsuario, monto, cuotas);
-            prestamo.calcularIntereses(monto, cuotas);
-
-            prestamos.push(prestamo);
-            prestamo.get_datos();
-
-        }
-
-        else if (edadUsuario <= 17) {
-
-            document.body.innerHTML = `<h3>NECESITAS SER MAYOR DE EDAD </h3>
-                                                    <a href="index.html"> VOLVE A CALCULAR TU PRESTAMO </a>`;
-
-        }
-
-    })
-
-}
-
-let botonCalcular = document.getElementById("botonCalcular");
-botonCalcular.addEventListener("click", calcular);
-
-
-
-
+});
 
 
