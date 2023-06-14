@@ -51,7 +51,6 @@ class PrestamoUsuario {
 // Función para calcular el préstamo
 function calcularPrestamo(e) {
 
-    e.preventDefault();
 
     // Obtener los valores del formulario
     let nombre = document.getElementById("nombre").value;
@@ -68,8 +67,9 @@ function calcularPrestamo(e) {
         let datosPrestamo = prestamo.obtenerDatos();
 
         // Mostrar los resultados en el DOM
-        let resultadoDiv = document.getElementById("resultado");
-        resultadoDiv.resultadoinnerHTML = `<h2>Resultados del Préstamo</h2>
+        let elemento = document.getElementById("resultado");
+        elemento.style.display = "block";
+        elemento.resultadoinnerHTML = `<h2>Resultados del Préstamo</h2>
                                                                     <p>BIENVENIDO A PRESTAMOS RB: ${datosPrestamo.nombre}</p>
                                                                     <p>MONTO A DEVOLVER: $${datosPrestamo.montoFinal.toFixed(2)}</p>
                                                                     <p>TOTAL A PAGAR POR MES: $${datosPrestamo.cuotaMensual.toFixed(2)}</p>
@@ -84,8 +84,8 @@ function calcularPrestamo(e) {
     
     else {
         // Mostrar mensaje de error si el usuario es menor de 18 años
-        let resultadoDiv = document.getElementById("resultado");
-        resultadoDiv.innerHTML = `<p>NECESITAS SER MAYOR DE EDAD</p>`;
+        let resultado= document.getElementById("resultado");
+        resultado.innerHTML = `<p>NECESITAS SER MAYOR DE EDAD</p>`;
     }
 }
   

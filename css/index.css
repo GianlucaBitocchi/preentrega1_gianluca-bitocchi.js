@@ -31,7 +31,7 @@ body {
     padding: 1.5em;
 }
 
-.formulario{
+.formulario {
     margin: 0;
 }
 
@@ -80,8 +80,14 @@ body {
     padding: 1em;
 }
 
-.boton :hover{
-background-color: rgb(59, 156, 189);
+.boton :hover {
+    background-color: rgb(59, 156, 189);
+}
+
+#resultado {
+
+    display: none;
+
 }
 
 /* footer */
