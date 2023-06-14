@@ -94,6 +94,13 @@ body {
 
 }
 
+a{
+
+    color: white;
+    text-decoration: none;
+
+}
+
 /* footer */
 .footer {
     background: rgb(218, 217, 214);

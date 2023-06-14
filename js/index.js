@@ -72,7 +72,7 @@ function calcularPrestamo(e) {
         resultadoP.style.display = "block";
         resultadoP.style.textAlign = "center";
         resultadoP.style.background = "rgb(218, 217, 214)";
-        resultadoP.resultadoinnerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITASTE</h2>
+        resultadoP.innerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITASTE</h2>
                                                                     <h3>BIENVENIDO A PRESTAMOS RB : ${datosPrestamo.nombre}</h3>
                                                                     <h3>MONTO SOLICITADO : $${datosPrestamo.monto}</h3>
                                                                     <h3>MONTO A DEVOLVER : $${datosPrestamo.montoFinal.toFixed(2)}</h3>
@@ -89,6 +89,7 @@ function calcularPrestamo(e) {
     else {
 
         let resultadoP = document.getElementById("resultado");
+        resultadoP.style.display = "block";
         resultadoP.style.textAlign = "center";
         resultadoP.style.background = "red";
         resultadoP.style.color = "white";
@@ -109,8 +110,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let datosPrestamo = JSON.parse(localStorage.getItem("datosPrestamo"));
     if (datosPrestamo) {
 
-        let resultadoDiv = document.getElementById("resultado");
-        resultadoDiv.innerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITASTE</h2>
+        let resultadoP = document.getElementById("resultado");
+        resultadoP.innerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITASTE</h2>
                                                      <h3>BIENVENIDO A PRESTAMOS RB : ${datosPrestamo.nombre}</h3>
                                                      <h3>MONTO SOLICITADO : $${datosPrestamo.monto}</h3>
                                                      <h3>TOTAL A DEVOLVER : $${datosPrestamo.montoFinal.toFixed(2)}</h3>
