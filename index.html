@@ -35,6 +35,7 @@
 </head>
 
 <!-- cuerpo -->
+
 <body>
 
     <!-- logo -->
@@ -52,45 +53,57 @@
     </div>
 
     <!-- formulario -->
-    <form id="formulario">
+    <div class="contenedor">
 
-        <!-- nombre y apellido -->
-        <div>
-            <label for="nombre">NOMBRE Y APELLIDO</label>
-            <input type="text" id="nombre" required>
+        <div class="contenedorform">
+
+            <div class="formularioa">
+
+                <form id="formulario">
+
+                    <!-- nombre y apellido -->
+                    <p>
+                        <label for="nombre">NOMBRE Y APELLIDO</label>
+                        <input type="text" id="nombre" required>
+                    </p>
+
+                    <!-- edad -->
+                    <p>
+                        <label for="edad">EDAD</label>
+                        <input type="number" id="edad" required>
+                    </p>
+
+                    <!-- monto -->
+                    <p>
+                        <label for="monto">ELEGI EL MONTO QUE NECESITAS</label>
+                        <input type="number" id="monto" required>
+                    </p>
+
+                    <!-- cuotas -->
+                    <p>
+                        <label for="cuotas">SELECCIONA LA CANTIDAD DE CUOTAS</label>
+
+                        <select id="cuotas" required>
+                            <option value="3">3</option>
+                            <option value="6">6</option>
+                            <option value="12">12</option>
+                            <option value="18">18</option>
+                        </select>
+
+                    </p>
+
+                    <!-- boton -->
+                    <p class="boton">
+                        <button type="submit" id="botonCalcular">CALCULA TU PRESTAMO</button>
+                    </p>
+
+                </form>
+
+            </div>
+
         </div>
 
-        <!-- edad -->
-        <div>
-            <label for="edad">EDAD</label>
-            <input type="number" id="edad" required>
-        </div>
-
-        <!-- monto -->
-        <div>
-            <label for="monto">ELEGI EL MONTO QUE NECESITAS</label>
-            <input type="number" id="monto" required>
-        </div>
-
-        <!-- cuotas -->
-        <div>
-            <label for="cuotas">SELECCIONA LA CANTIDAD DE CUOTAS</label>
-
-            <select id="cuotas" required>
-                <option value="3">3</option>
-                <option value="6">6</option>
-                <option value="12">12</option>
-                <option value="18">18</option>
-            </select>
-
-        </div>
-
-        <!-- boton -->
-        <div>
-            <button type="submit" id="botonCalcular">CALCULA TU PRESTAMO</button>
-        </div>
-
-    </form>
+    </div>
 
     <div id="resultado"></div>
 
@@ -103,7 +116,7 @@
 
     </footer>
 
-<!-- script js -->
+    <!-- script js -->
     <script src="./js/index.js"></script>
 
 </body>

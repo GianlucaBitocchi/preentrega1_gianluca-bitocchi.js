@@ -1,6 +1,6 @@
 // Clase para el cálculo del préstamo
 class PrestamoUsuario {
-    
+
     constructor(nombre, monto, cuotas) {
 
         this.nombre = nombre;
@@ -51,6 +51,7 @@ class PrestamoUsuario {
 // Función para calcular el préstamo
 function calcularPrestamo(e) {
 
+    e.preventDefault();
 
     // Obtener los valores del formulario
     let nombre = document.getElementById("nombre").value;
@@ -67,28 +68,35 @@ function calcularPrestamo(e) {
         let datosPrestamo = prestamo.obtenerDatos();
 
         // Mostrar los resultados en el DOM
-        let elemento = document.getElementById("resultado");
-        elemento.style.display = "block";
-        elemento.resultadoinnerHTML = `<h2>Resultados del Préstamo</h2>
-                                                                    <p>BIENVENIDO A PRESTAMOS RB: ${datosPrestamo.nombre}</p>
-                                                                    <p>MONTO A DEVOLVER: $${datosPrestamo.montoFinal.toFixed(2)}</p>
-                                                                    <p>TOTAL A PAGAR POR MES: $${datosPrestamo.cuotaMensual.toFixed(2)}</p>
+        let resultadoP = document.getElementById("resultado");
+        resultadoP.style.display = "block";
+        resultadoP.style.textAlign = "center";
+        resultadoP.style.background = "rgb(218, 217, 214)";
+        resultadoP.resultadoinnerHTML = `<h2>Resultados del Préstamo</h2>
+                                                                    <h3>BIENVENIDO A PRESTAMOS RB: ${datosPrestamo.nombre}</h3>
+                                                                    <h3>MONTO A DEVOLVER: $${datosPrestamo.montoFinal.toFixed(2)}</h3>
+                                                                    <h3>TOTAL A PAGAR POR MES: $${datosPrestamo.cuotaMensual.toFixed(2)}</h3>
     `;
 
-    let boton = document.getElementById("botonCalcular");
-    boton.addEventListener("click", calcularPrestamo);
+        let boton = document.getElementById("botonCalcular");
+        boton.addEventListener("click", calcularPrestamo);
 
         // Guardar los resultados en el almacenamiento local
         localStorage.setItem("datosPrestamo", JSON.stringify(datosPrestamo));
-    } 
-    
-    else {
-        // Mostrar mensaje de error si el usuario es menor de 18 años
-        let resultado= document.getElementById("resultado");
-        resultado.innerHTML = `<p>NECESITAS SER MAYOR DE EDAD</p>`;
     }
+
+    else {
+    
+        let resultadoP = document.getElementById("resultado");
+        resultadoP.style.background = "red";
+        resultadoP.style.color = "white";
+        resultadoP.innerHTML = `<h2>NECESITAS SER MAYOR DE EDAD</h2>
+                                                <a href="index.html">VOLVE A CALCULAR</a>`;
+    }
+
 }
-  
+
+
 // Escuchar el evento submit del formulario
 let formulario = document.getElementById("formulario");
 formulario.addEventListener("submit", calcularPrestamo);
