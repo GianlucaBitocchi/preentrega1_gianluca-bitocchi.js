@@ -1,4 +1,4 @@
-// Clase para el cálculo del préstamo
+// datos del prestamo
 class PrestamoUsuario {
 
     constructor(nombre, monto, cuotas) {
@@ -10,7 +10,7 @@ class PrestamoUsuario {
 
     }
 
-    // Método para calcular los intereses y monto final
+    // calculador de intereses
     calcularIntereses() {
 
         let interes;
@@ -31,7 +31,7 @@ class PrestamoUsuario {
         this.montoFinal = this.monto + interes;
     }
 
-    // Método para obtener los datos del préstamo
+    // obetencion de datos
     obtenerDatos() {
 
         return {
@@ -48,7 +48,7 @@ class PrestamoUsuario {
 
 }
 
-// Función para calcular el préstamo
+// calcular el prestamo
 function calcularPrestamo(e) {
 
     e.preventDefault();
@@ -59,35 +59,37 @@ function calcularPrestamo(e) {
     let monto = parseInt(document.getElementById("monto").value);
     let cuotas = parseInt(document.getElementById("cuotas").value);
 
-    // Verificar la edad del usuario
+    // corroborar edad usuario
     if (edad >= 18) {
 
-        // Calcular el préstamo
+        // calcular el préstamo
         let prestamo = new PrestamoUsuario(nombre, monto, cuotas);
         prestamo.calcularIntereses();
         let datosPrestamo = prestamo.obtenerDatos();
 
-        // Mostrar los resultados en el DOM
+        // Mostrar los datos del dom
         let resultadoP = document.getElementById("resultado");
         resultadoP.style.display = "block";
         resultadoP.style.textAlign = "center";
         resultadoP.style.background = "rgb(218, 217, 214)";
-        resultadoP.resultadoinnerHTML = `<h2>Resultados del Préstamo</h2>
-                                                                    <h3>BIENVENIDO A PRESTAMOS RB: ${datosPrestamo.nombre}</h3>
-                                                                    <h3>MONTO A DEVOLVER: $${datosPrestamo.montoFinal.toFixed(2)}</h3>
-                                                                    <h3>TOTAL A PAGAR POR MES: $${datosPrestamo.cuotaMensual.toFixed(2)}</h3>
+        resultadoP.resultadoinnerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITASTE</h2>
+                                                                    <h3>BIENVENIDO A PRESTAMOS RB : ${datosPrestamo.nombre}</h3>
+                                                                    <h3>MONTO SOLICITADO : $${datosPrestamo.monto}</h3>
+                                                                    <h3>MONTO A DEVOLVER : $${datosPrestamo.montoFinal.toFixed(2)}</h3>
+                                                                    <h3>TOTAL A PAGAR POR MES : $${datosPrestamo.cuotaMensual.toFixed(2)}</h3>
     `;
 
         let boton = document.getElementById("botonCalcular");
         boton.addEventListener("click", calcularPrestamo);
 
-        // Guardar los resultados en el almacenamiento local
+        // Guardar los resultados 
         localStorage.setItem("datosPrestamo", JSON.stringify(datosPrestamo));
     }
 
     else {
-    
+
         let resultadoP = document.getElementById("resultado");
+        resultadoP.style.textAlign = "center";
         resultadoP.style.background = "red";
         resultadoP.style.color = "white";
         resultadoP.innerHTML = `<h2>NECESITAS SER MAYOR DE EDAD</h2>
@@ -97,23 +99,22 @@ function calcularPrestamo(e) {
 }
 
 
-// Escuchar el evento submit del formulario
+// evento submit del formulario
 let formulario = document.getElementById("formulario");
 formulario.addEventListener("submit", calcularPrestamo);
 
-// Obtener los datos del préstamo almacenados en el almacenamiento local y mostrarlos al cargar la página
+// Obtener los datos del préstamo almacenados 
 document.addEventListener("DOMContentLoaded", function () {
 
     let datosPrestamo = JSON.parse(localStorage.getItem("datosPrestamo"));
     if (datosPrestamo) {
 
         let resultadoDiv = document.getElementById("resultado");
-        resultadoDiv.innerHTML = `
-      <h3>DATOS DEL PRESTAMO QUE SOLICITASTE</h3>
-      <p>BIENVENIDO A PRESTAMOS RB: ${datosPrestamo.nombre}</p>
-      <p>TOTAL A DEVOLVER: $${datosPrestamo.montoFinal.toFixed(2)}</p>
-      <p>TOTAL A PAGAR POR MES: $${datosPrestamo.cuotaMensual.toFixed(2)}</p>
-    `;
+        resultadoDiv.innerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITASTE</h2>
+                                                     <h3>BIENVENIDO A PRESTAMOS RB : ${datosPrestamo.nombre}</h3>
+                                                     <h3>MONTO SOLICITADO : $${datosPrestamo.monto}</h3>
+                                                     <h3>TOTAL A DEVOLVER : $${datosPrestamo.montoFinal.toFixed(2)}</h3>
+                                                     <h3>TOTAL A PAGAR POR MES : $${datosPrestamo.cuotaMensual.toFixed(2)}</h3>`;
 
     }
 
