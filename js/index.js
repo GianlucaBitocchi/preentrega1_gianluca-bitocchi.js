@@ -1,52 +1,3 @@
-// datos del prestamo
-class PrestamoUsuario {
-
-    constructor(nombre, monto, cuotas) {
-
-        this.nombre = nombre;
-        this.monto = monto;
-        this.cuotas = cuotas;
-        this.montoFinal = 0;
-
-    }
-
-    // calculador de intereses
-    calcularIntereses() {
-
-        let interes;
-
-        if (this.cuotas === 3) {
-            interes = this.monto * 0.30;
-        }
-        else if (this.cuotas === 6) {
-            interes = this.monto * 0.60;
-        }
-        else if (this.cuotas === 12) {
-            interes = this.monto * 1.20;
-        }
-        else if (this.cuotas === 18) {
-            interes = this.monto * 1.80;
-        }
-
-        this.montoFinal = this.monto + interes;
-    }
-
-    // obetencion de datos
-    obtenerDatos() {
-
-        return {
-
-            nombre: this.nombre,
-            monto: this.monto,
-            cuotas: this.cuotas,
-            montoFinal: this.montoFinal,
-            cuotaMensual: this.montoFinal / this.cuotas,
-
-        };
-
-    }
-
-}
 
 // calcular el prestamo
 function calcularPrestamo(e) {
@@ -77,7 +28,7 @@ function calcularPrestamo(e) {
                                                                     <h3>MONTO SOLICITADO : $${datosPrestamo.monto}</h3>
                                                                     <h3>MONTO A DEVOLVER : $${datosPrestamo.montoFinal.toFixed(2)}</h3>
                                                                     <h3>TOTAL A PAGAR POR MES : $${datosPrestamo.cuotaMensual.toFixed(2)}</h3>
-    `;
+                                                                    `;
 
         let boton = document.getElementById("botonCalcular");
         boton.addEventListener("click", calcularPrestamo);
@@ -88,13 +39,18 @@ function calcularPrestamo(e) {
 
     else {
 
-        let resultadoP = document.getElementById("resultado");
-        resultadoP.style.display = "block";
-        resultadoP.style.textAlign = "center";
-        resultadoP.style.background = "red";
-        resultadoP.style.color = "white";
-        resultadoP.innerHTML = `<h2>NECESITAS SER MAYOR DE EDAD</h2>
-                                                <a href="index.html">VOLVE A CALCULAR</a>`;
+        Swal.fire({
+            icon: "error",
+            title: "NECESITAS SER MAYOR DE EDAD",
+            showClass: {
+                popup: "animate__animated animate__zoomIn"
+            },
+            hideClass: {
+                popup: "animate__animated animate__zoomOut"
+            }
+
+        });
+
     }
 
 }

@@ -9,20 +9,6 @@ body {
     min-height: 100vh;
 }
 
-/* logo */
-.logo {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-}
-
-/* titulo */
-.titulo {
-    display: flex;
-    justify-content: center;
-    margin-top: 3px;
-}
-
 /* formulario */
 .contenedor {
     max-width: 1170px;
@@ -103,14 +89,7 @@ a{
 
 /* footer */
 .footer {
+    
     background: rgb(218, 217, 214);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 40px;
-    margin-top: auto;
-}
 
-.footer a {
-    margin: 3px;
 }

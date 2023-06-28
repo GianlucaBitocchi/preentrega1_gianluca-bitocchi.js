@@ -26,11 +26,18 @@
         href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400&family=Roboto:wght@100;300;500;700&display=swap"
         rel="stylesheet">
 
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
     <!-- estilo css -->
     <link rel="stylesheet" href="css/index.css">
 
     <!-- animacion -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.all.min.js"></script>
 
 </head>
 
@@ -41,19 +48,19 @@
     <!-- logo -->
     <header>
 
-        <div class="logo animate__animated animate__backInDown">
+        <div class="container-fluid d-flex justify-content-center m-3 logo animate__animated animate__backInDown">
             <img src="img/prestamo.png" alt="logo" width="220px" height="170px;">
         </div>
 
     </header>
 
     <!-- titulo -->
-    <div class="titulo animate__animated animate__tada">
-        <h2>SOLICITA TU PRESTAMO Y TU MEJOR FINANCIACION</h2>
+    <div class="container-fluid d-flex justify-content-center mt-3 titulo animate__animated animate__tada">
+        <h2 class="text-center">SOLICITA TU PRESTAMO Y TU MEJOR FINANCIACION</h2>
     </div>
 
     <!-- formulario -->
-    <div class="contenedor animate__animated animate__fadeInBottomLeft">
+    <div class="contenedor animate__animated animate__flipInX">
 
         <div class="contenedorform">
 
@@ -105,20 +112,30 @@
 
     </div>
 
-    <div id="resultado" class="animate__animated animate__backInRight"></div>
+    <div id="resultado" class="animate__animated animate__flipInX"></div>
 
     <!-- footer -->
     <footer>
 
-        <div class="footer">
-            <h3>GRACIAS POR CONFIAR EN NOSOSTROS</h3>
+        <div class="container-fluid w-100 mx-auto p-1 footer">
+            <h3 class="text-center m-1">GRACIAS POR CONFIAR EN NOSOSTROS</h3>
         </div>
 
     </footer>
 
-    <!-- script js -->
+    <!-- script bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
+
+    <!-- script sweetalert -->
+    <script src="sweetalert2.all.min.js"></script>
+
+    <!-- scripts js -->
     <script src="./js/index.js"></script>
+    <script src="./js/constructor.js"></script>
 
 </body>
 
 </html>
+<!-- fin -->
