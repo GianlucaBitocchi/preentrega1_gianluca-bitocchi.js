@@ -25,41 +25,45 @@ function obtenerDatosFormulario() {
 
 }
 
-    // Función error
-    function mostrarError(mensaje) {
-        Swal.fire({
-            icon: "error",
-            title: mensaje,
-            showClass: {
-                popup: "animate__animated animate__zoomIn",
-            },
-            hideClass: {
-                popup: "animate__animated animate__zoomOut",
-            },
-        });
-    }
+// Función error
+function mostrarError(mensaje) {
+    Swal.fire({
+        icon: "error",
+        title: mensaje,
+        showClass: {
+            popup: "animate__animated animate__zoomIn",
+        },
+        hideClass: {
+            popup: "animate__animated animate__zoomOut",
+        },
+    });
+}
 
-    // calcular el prestamo
-    function calcularPrestamo(e) {
-        e.preventDefault();
+// calcular el prestamo
+function calcularPrestamo(e) {
+    e.preventDefault();
 
-        obtenerDatosFormulario()
-            .then((datos) => {
+    fetch("calculador.json")
+        .then(response => response.json())
+        .then(data => console.log(data))
 
-                // corroborar edad usuario
-                if (datos.edad >= 18) {
+    obtenerDatosFormulario()
+        .then((datos) => {
 
-                    // calcular el préstamo
-                    let prestamo = new PrestamoUsuario(datos.nombre, datos.monto, datos.cuotas);
-                    prestamo.calcularIntereses();
-                    let datosPrestamo = prestamo.obtenerDatos();
+            // corroborar edad usuario
+            if (datos.edad >= 18) {
 
-                    // Mostrar los datos del dom
-                    let resultadoP = document.getElementById("resultado");
-                    resultadoP.style.display = "block";
-                    resultadoP.style.textAlign = "center";
-                    resultadoP.style.background = "rgb(218, 217, 214)";
-                    resultadoP.innerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITADO</h2>
+                // calcular el préstamo
+                let prestamo = new PrestamoUsuario(datos.nombre, datos.monto, datos.cuotas);
+                prestamo.calcularIntereses();
+                let datosPrestamo = prestamo.obtenerDatos();
+
+                // Mostrar los datos del dom
+                let resultadoP = document.getElementById("resultado");
+                resultadoP.style.display = "block";
+                resultadoP.style.textAlign = "center";
+                resultadoP.style.background = "rgb(218, 217, 214)";
+                resultadoP.innerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITADO</h2>
                                                                     <h3>BIENVENIDO A PRESTAMOS RB : ${datosPrestamo.nombre}</h3>
                                                                     <h3>MONTO SOLICITADO : $${datosPrestamo.monto}</h3>
                                                                     <h3>MONTO A DEVOLVER : $${datosPrestamo.montoFinal.toFixed(2)}</h3>
@@ -67,19 +71,19 @@ function obtenerDatosFormulario() {
                                                                     <button><a href="index.html"> VOLVE A COTIZAR </a></button>
                                                                     `;
 
-                    localStorage.setItem("datosPrestamo", JSON.stringify(datosPrestamo));
-                }
+                localStorage.setItem("datosPrestamo", JSON.stringify(datosPrestamo));
+            }
 
-                else {
-                    mostrarError("NECESITAS SER MAYOR DE EDAD");
-                }
-            })
+            else {
+                mostrarError("NECESITAS SER MAYOR DE EDAD");
+            }
+        })
 
-            .catch((error) => {
-                mostrarError(error);
-            });
+        .catch((error) => {
+            mostrarError(error);
+        });
 
-    }
+}
 
 // evento calucular
 let boton = document.getElementById("botonCalcular");
