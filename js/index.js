@@ -8,7 +8,15 @@ function obtenerDatosFormulario() {
         let cuotas = parseInt(document.getElementById("cuotas").value);
 
         if (nombre && !isNaN(edad) && !isNaN(monto) && !isNaN(cuotas)) {
-            resolve({ nombre, edad, monto, cuotas });
+
+            let datos = {
+                nombre: nombre,
+                edad: edad,
+                monto: monto,
+                cuotas: cuotas
+            };
+
+            resolve(datos);
         }
         else {
             reject("COMPLETA TODOS LOS DATOS");
@@ -52,10 +60,11 @@ function obtenerDatosFormulario() {
                     resultadoP.style.textAlign = "center";
                     resultadoP.style.background = "rgb(218, 217, 214)";
                     resultadoP.innerHTML = `<h2>DATOS DEL PRESTAMO QUE SOLICITADO</h2>
-                                                                    <h3>BIENVENIDO A PRESTAMOS RB   ${datosPrestamo.nombre}</h3>
+                                                                    <h3>BIENVENIDO A PRESTAMOS RB : ${datosPrestamo.nombre}</h3>
                                                                     <h3>MONTO SOLICITADO : $${datosPrestamo.monto}</h3>
                                                                     <h3>MONTO A DEVOLVER : $${datosPrestamo.montoFinal.toFixed(2)}</h3>
                                                                     <h3>TOTAL A PAGAR POR MES : $${datosPrestamo.cuotaMensual.toFixed(2)}</h3>
+                                                                    <button><a href="index.html"> VOLVE A COTIZAR </a></button>
                                                                     `;
 
                     localStorage.setItem("datosPrestamo", JSON.stringify(datosPrestamo));
