@@ -45,11 +45,25 @@
 
 <body>
 
-    <!-- logo -->
+    <!-- logo  y clima -->
     <header>
 
-        <div class="container-fluid d-flex justify-content-center m-3 logo animate__animated animate__backInDown">
-            <img src="img/prestamo.png" alt="logo" width="220px" height="170px;">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-4">
+                    <div id="clima"
+                        class="d-flex flex-column justify-content-start m-4 animate__animated animate__backInDown">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="d-flex justify-content-center m-3 logo animate__animated animate__backInDown">
+                        <img src="img/prestamo.png" alt="logo" width="220px" height="170px;">
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </header>
@@ -77,13 +91,13 @@
                     <!-- edad -->
                     <p>
                         <label for="edad">EDAD</label>
-                        <input type="number" id="edad" required>
+                        <input type="number" id="edad" required="" min="0" max="100">
                     </p>
 
                     <!-- monto -->
                     <p>
                         <label for="monto">ELEGI EL MONTO QUE NECESITAS</label>
-                        <input type="number" id="monto" required>
+                        <input type="number" id="monto" required="" min="0" max="1000000">
                     </p>
 
                     <!-- cuotas -->
@@ -112,7 +126,9 @@
 
     </div>
 
-    <div id="resultado" class="animate__animated animate__flipInX"></div>
+    <div class="container-fluid">
+        <div id="resultado" class="text-center justify-content-center animate__animated animate__flipInX"></div>
+    </div>
 
     <!-- footer -->
     <footer>
@@ -132,8 +148,10 @@
     <script src="sweetalert2.all.min.js"></script>
 
     <!-- scripts js -->
+    <script src="./js/apiclima.js"></script>
     <script src="./js/index.js"></script>
     <script src="./js/constructor.js"></script>
+
 
 </body>
 

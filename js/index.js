@@ -43,10 +43,6 @@ function mostrarError(mensaje) {
 function calcularPrestamo(e) {
     e.preventDefault();
 
-    fetch("calculador.json")
-        .then(response => response.json())
-        .then(data => console.log(data))
-
     obtenerDatosFormulario()
         .then((datos) => {
 
